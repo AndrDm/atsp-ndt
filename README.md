@@ -319,15 +319,16 @@ milpr.exe cost_matrix_120.csv
 Output:
 
 ```
-Reading CSV ..\..\csv\cost_matrix_60.csv
+Reading CSV cost_matrix_3.csv
 CSV loaded
-Sequential movement (Home > 1 > 2 > ... > Home): 90.716 seconds
-Creating 3540 binary variables and 60 MTZ variables...                                   Building objective with 3540 terms...
-Adding 120 degree constraints...
-Adding 3422 MTZ constraints...
-⠏ Solved - 00:00:10
-Optimal movement: 61.727 seconds
-Route: Home > 23 > 24 > 11 > 17 > 14 > 13 > 32 > 16 > 33 > 59 > 12 > 43 > 52 > 30 > 55 > 36 > 57 > 42 > 47 > 10 > 46 > 21 > 26 > 44 > 34 > 56 > 41 > 31 > 19 > 6 > 58 > 48 > 27 > 49 > 20 > 22 > 53 > 4 > 3 > 9 > 18 > 45 > 38 > 39 > 40 > 29 > 37 > 5 > 8 > 50 > 2 > 51 > 28 > 54 > 7 > 35 > 25 > 15 > 1 > Home
+Sequential movement (Home > 1 > 2 > ... > Home): 6.054 seconds
+Creating 12 binary variables and 4 MTZ variables...
+Building objective with 12 terms...
+Adding 8 degree constraints...
+Adding 6 MTZ constraints...
+⠏ Solved - 00:00:01
+Optimal movement: 5.479 seconds
+Route: Home > 2 > 3 > 1 > Home
 ```
 
 ### Results
