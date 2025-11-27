@@ -1,3 +1,32 @@
+/*!
+ * ATSP Solver – Manipulator Movement Optimizer
+ * ------------------------------------------------
+ * Version: v0.1.0
+ *
+ * Description:
+ * This program solves the Asymmetric Traveling Salesman Problem (ATSP)
+ * for a manipulator movement optimization scenario using a Mixed Integer
+ * Linear Programming (MILP) approach with the `good_lp` crate.
+ *
+ * Key Features:
+ * - Reads a square cost matrix from a CSV file (positions × positions).
+ * - Computes the optimal route starting and ending at Home (index 0).
+ * - Uses MTZ (Miller–Tucker–Zemlin) constraints to prevent subtours.
+ * - Outputs the optimal movement time and route.
+ *
+ * Usage:
+ *   milpr.exe <path_to_csv>
+ *
+ * Assumptions:
+ * - The manipulator can reach any position from any other position without collision.
+ * - The cost matrix is complete and square; diagonal elements are zero.
+ *
+ * Dependencies:
+ * - good_lp crate for MILP modeling and solving.
+ *
+ * AD, 2025-11-27
+ */
+
 use good_lp::{
 	Expression, ProblemVariables, Solution, SolverModel, default_solver,
 	variable,
