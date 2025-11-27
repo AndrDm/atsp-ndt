@@ -1,0 +1,9 @@
+[package]
+name = "milpr"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+csv = "1.4.0"
+good_lp = { version = "1.14.2", features = ["highs"], default-features = false }
+indicatif = "0.18.3"
