@@ -12,7 +12,7 @@ In X-ray NDT, inspection typically involves multiple positions (especially in 2D
 
 ![](assets/engine1.gif)
 
-An 8-year-old video is publicly available (inspection starts at **2:57**) — https://youtu.be/-fnSnCGQZKk?t=177.
+A publicly available video shows the inspection process (starting at **2:57**) — https://youtu.be/-fnSnCGQZKk?t=177.
 
 For example, let’s take a simpler case: inspecting an engine piston might require just three distinct views (two from sides and one from the top). The typical time to move from one position to another is around **1–2 seconds**, as shown in the video above. However, the time taken to move between these positions may not be symmetric, meaning the time to move from position 1 to 2 is not equal to the time to move back from 2 to 1 due to:
 
