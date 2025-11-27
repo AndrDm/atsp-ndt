@@ -358,7 +358,7 @@ Dependencies:
 pip install numpy pandas scipy gurobipy
 ```
 
-#### Brute Force (Naive)
+#### [Brute Force (Naive)](https://github.com/AndrDm/atsp-ndt/blob/c4778e51a49071971e98f58eb776f2c114d8743d/all_solvers.py#L546)
 
 - **Idea:** Enumerate all possible tours and pick the shortest.
 - **Complexity:** $O(n!)$ — grows factorially with number of positions.
@@ -367,7 +367,7 @@ pip install numpy pandas scipy gurobipy
 
 ------
 
-#### Held-Karp Algorithm
+#### [Held-Karp Algorithm](https://github.com/AndrDm/atsp-ndt/blob/c4778e51a49071971e98f58eb776f2c114d8743d/all_solvers.py#L565)
 
 - **Idea:** Dynamic programming approach using subsets of positions.
 - **Complexity:** $O(n^2 \cdot 2^n)$.
@@ -376,7 +376,7 @@ pip install numpy pandas scipy gurobipy
 
 ------
 
-#### Greedy (Fastest)
+#### [Greedy (Fastest)](https://github.com/AndrDm/atsp-ndt/blob/c4778e51a49071971e98f58eb776f2c114d8743d/all_solvers.py#L52)
 
 - **Idea:** Start from a city, repeatedly pick the nearest unvisited city.
 - **Complexity:** $O(n^2)$.
@@ -385,7 +385,7 @@ pip install numpy pandas scipy gurobipy
 
 ------
 
-#### Simulated Annealing
+#### [Simulated Annealing](https://github.com/AndrDm/atsp-ndt/blob/c4778e51a49071971e98f58eb776f2c114d8743d/all_solvers.py#L83)
 
 - **Idea:** Probabilistic search that accepts worse solutions early to escape local minima, gradually reducing randomness.
 - **Complexity:** Depends on iterations; typically polynomial.
@@ -394,7 +394,7 @@ pip install numpy pandas scipy gurobipy
 
 ------
 
-#### Ant Colony Optimization
+#### [Ant Colony Optimization](https://github.com/AndrDm/atsp-ndt/blob/c4778e51a49071971e98f58eb776f2c114d8743d/all_solvers.py#L121)
 
 - **Idea:** Mimics ant behavior using pheromone trails to reinforce good paths.
 - **Complexity:** Polynomial but depends on iterations and colony size.
@@ -403,7 +403,7 @@ pip install numpy pandas scipy gurobipy
 
 ------
 
-#### Tabu Search
+#### [Tabu Search](https://github.com/AndrDm/atsp-ndt/blob/c4778e51a49071971e98f58eb776f2c114d8743d/all_solvers.py#L180)
 
 - **Idea:** Local search with memory (tabu list) to avoid revisiting recent solutions.
 - **Complexity:** Polynomial; depends on iterations.
@@ -412,7 +412,7 @@ pip install numpy pandas scipy gurobipy
 
 ------
 
-#### Lin-Kernighan (2-Opt and beyond)
+#### [Lin-Kernighan (2-Opt and beyond)](https://github.com/AndrDm/atsp-ndt/blob/c4778e51a49071971e98f58eb776f2c114d8743d/all_solvers.py#L229)
 
 - **Idea:** Iteratively improve tour by swapping edges (2-opt, 3-opt, etc.).
 - **Complexity:** $O(n^2)$ per iteration.
@@ -421,7 +421,7 @@ pip install numpy pandas scipy gurobipy
 
 ------
 
-#### Genetic Algorithm
+#### [Genetic Algorithm](https://github.com/AndrDm/atsp-ndt/blob/c4778e51a49071971e98f58eb776f2c114d8743d/all_solvers.py#L261)
 
 - **Idea:** Evolutionary approach using crossover and mutation on tours.
 - **Complexity:** Depends on population size and generations.
@@ -430,7 +430,7 @@ pip install numpy pandas scipy gurobipy
 
 ------
 
-#### Mixed Integer Linear Programming (MILP)
+#### [Mixed Integer Linear Programming (MILP)](https://github.com/AndrDm/atsp-ndt/blob/c4778e51a49071971e98f58eb776f2c114d8743d/all_solvers.py#L388)
 
 - **Idea:** Formulate ATSP as MILP and solve with branch-and-bound.
 - **Complexity:** Exponential worst case.
@@ -439,7 +439,7 @@ pip install numpy pandas scipy gurobipy
 
 ------
 
-#### Simplex
+#### [Simplex](https://github.com/AndrDm/atsp-ndt/blob/c4778e51a49071971e98f58eb776f2c114d8743d/all_solvers.py#L479)
 
 - **Idea:** Solves linear programs, but ATSP is not purely linear (requires integer constraints).
 - **Pros:** Useful for LP relaxation of TSP.
@@ -447,7 +447,7 @@ pip install numpy pandas scipy gurobipy
 
 ------
 
-#### Gurobi
+#### [Gurobi](https://github.com/AndrDm/atsp-ndt/blob/c4778e51a49071971e98f58eb776f2c114d8743d/all_solvers.py#L326)
 
 - **Idea:** Commercial MILP solver using advanced branch-and-cut algorithms.
 - **Pros:** Extremely efficient for exact solutions; handles large instances better than naive MILP.
