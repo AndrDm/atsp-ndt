@@ -337,7 +337,7 @@ For 3, 60 and 120 positions:
 
 |               | Computation Time | Sequential Movement | Optimized Movement |
 | ------------- | ---------------- | ------------------- | ------------------ |
-| 3 Positions   | Zero             | 6.054 seconds       | 5.479 seconds      |
+| 3 Positions   | < 1 second       | 6.054 seconds       | 5.479 seconds      |
 | 60 Positions  | 10 seconds       | 90.716 seconds      | 61.727 seconds     |
 | 120 Positions | 40 seconds       | 181.027 seconds     | 121.644 seconds    |
 
