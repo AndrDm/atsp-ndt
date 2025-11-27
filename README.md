@@ -59,7 +59,7 @@ The diagram shown above can be represented as the following table (time in secon
 |P2|1.791 s|1.420 s|0|1.658 s|
 |P3|1.976 s|1.326 s|1.747 s| 0       |
 
-This matrix can be created in a simple way: just perform all possible movements (e.g., 1 → 2, 2 → 1, 1 → 3, 3 → 1, and so on) and measure the time from the **“Move to Next Position”** command to **“Start Image Acquisition.”**
+This matrix can be created in a simple way: perform all possible movements (e.g., 1 → 2, 2 → 1, 1 → 3, 3 → 1, and so on) and measure the time from the **‘Move to Next Position’** command to **‘Start Image Acquisition.’** It is important to include all components in the measurement — the manipulator, X-ray generator, filter changer (if present), detector synchronization, and so on.
 
 Now the question is — what is the most optimal inspection strategy (the fastest route)?
 
@@ -74,7 +74,7 @@ In this example, it’s quite straightforward — we have only **6 possible insp
 |P0 -> P3 -> P1 -> P2 -> P0| 6.024 seconds ||
 |P0 -> P3 -> P2 -> P1 -> P0| 6.121 seconds ||
 
-And the route **Home → P2 → P3 → P1 → Home** is the fastest route (1.31 + 1.66 + 1.33 + 1.18 = **5.48 seconds**):
+And the route **Home → P2 → P3 → P1 → Home** is the fastest (1.31 + 1.66 + 1.33 + 1.18 = **5.48 seconds**):
 
 ![image-20251125180832039](assets/image-20251125180832039.png)
 
