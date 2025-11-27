@@ -6,6 +6,7 @@
 ## Dependency:  pip install numpy pandas gurobipy scipy
 ## Created on:	12.07.2025 at 08:00:00 by Andrey Dmitriev.
 ## Python 3.14  (gurobipy is available in Python 3.13 only)
+##
 ##==============================================================================
 import sys
 # Get major and minor version
