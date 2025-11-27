@@ -293,7 +293,7 @@ fn main() -> Result<(), Box<dyn Error>> {
 }
 ```
 
-(Full source code, including the CSV loader, is available in this repository.)
+(Full source code, including the CSV loader, is available in this repository in [src folder](https://github.com/AndrDm/atsp-ndt/tree/main/src))
 
 The cost matrix in the CSV file should look like this:
 
