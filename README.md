@@ -348,7 +348,7 @@ Optimal route for 60 positions:
 Route: Home > 23 > 24 > 11 > 17 > 14 > 13 > 32 > 16 > 33 > 59 > 12 > 43 > 52 > 30 > 55 > 36 > 57 > 42 > 47 > 10 > 46 > 21 > 26 > 44 > 34 > 56 > 41 > 31 > 19 > 6 > 58 > 48 > 27 > 49 > 20 > 22 > 53 > 4 > 3 > 9 > 18 > 45 > 38 > 39 > 40 > 29 > 37 > 5 > 8 > 50 > 2 > 51 > 28 > 54 > 7 > 35 > 25 > 15 > 1 > Home
 ```
 
-Computation time increased from 10 seconds for 60 positions to 40 seconds for 120 positions, which is still fully acceptable — less than one minute. Filling the cost matrix is also feasible, because for 60 positions, you need to perform 3600 manipulator movements, taking about 5400 seconds (assuming 1.5 seconds per movement on average), which is roughly 90 minutes. For 120 positions, this measurement could take around 6 hours. It is assumed that the manipulator can reach any position from any other position **collision-free**.
+Computation time increased from 10 seconds for 60 positions to 40 seconds for 120 positions (on a Xeon w5-2445), which is still fully acceptable — less than one minute. Filling the cost matrix is also feasible, because for 60 positions, you need to perform 3600 manipulator movements, taking about 5400 seconds (assuming an average of 1.5 seconds per movement), which is roughly 90 minutes. For 120 positions, this measurement could take around 6 hours (in assumption 1.5 seconds average per movement). Obviously, it is assumed that the manipulator can reach any position from any other position **collision-free**.
 
 ### Python Exercises
 
