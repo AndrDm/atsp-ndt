@@ -4,6 +4,8 @@ A short journey through the Traveling Salesman Problem to optimize inspection tr
 
 **TL;DR:** below is a small tool designed to reorder inspection positions and minimize overall inspection time.
 
+**Latest Release:** [`v0.1.0` (Windows x64 executable)](https://github.com/AndrDm/atsp-ndt/releases/download/v.0.1.0/milpr-20251127_0_1_0.7z)
+
 ### Problem Statement
 
 In industrial applications such as X-ray Non-Destructive Testing (NDT) or Printed Circuit Board (PCB) assembly — where robotic manipulation is involved — the efficiency of inspection or pick-and-place tasks critically depends on the sequence of movements between positions. The path taken by a manipulator significantly affects the total operation time. This is not just a mechanical issue — it’s a computational challenge. The problem closely resembles the well-known **Asymmetric Traveling Salesman Problem (ATSP)**, a variation of the classic **[Traveling Salesman Problem (TSP)](https://en.wikipedia.org/wiki/Travelling_salesman_problem)**.
