@@ -117,7 +117,7 @@ fn solve_atsp(cost_matrix: Vec<Vec<f64>>) -> (f64, Vec<String>) {
 			if i != j {
 				problem.add_constraint(
 					u[i] - u[j] + ((n as f64) - 1.0) * x[i][j]
-				 		<< (n as f64) - 2.0,
+						<< (n as f64) - 2.0,
 				);
 			}
 		}
@@ -155,9 +155,11 @@ fn solve_atsp(cost_matrix: Vec<Vec<f64>>) -> (f64, Vec<String>) {
 fn main() -> Result<(), Box<dyn Error>> {
 	let args: Vec<String> = env::args().collect();
 	if args.len() < 2 {
-
-	    let version = env!("CARGO_PKG_VERSION");
-    	println!("ATSP Solver - Manipulator Movement Optimizer version: {}", version);
+		let version = env!("CARGO_PKG_VERSION");
+		println!(
+			"ATSP Solver - Manipulator Movement Optimizer version: {}",
+			version
+		);
 		eprintln!("Usage: {} <path_to_csv>", args[0]);
 		std::process::exit(1);
 	}
