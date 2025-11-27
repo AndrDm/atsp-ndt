@@ -355,6 +355,8 @@ Computation time increased from 10 seconds for 60 positions to 40 seconds for 12
 
 The MILP solver implemented in Rust is not the only possible approach. Let’s explore other 10 algorithms in Python (they can certainly be implemented in Rust as well, but Python is much simpler for this domain).
 
+Source code: [all_solvers.py](https://github.com/AndrDm/atsp-ndt/blob/main/all_solvers.py).
+
 Dependencies:
 
 ```
