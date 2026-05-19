@@ -569,7 +569,7 @@ Time: 1753.6484 seconds
 Shuffled cost_matrix_50s.csv (around one and half minute for MILP)
 
 ```
->python all_solvers.py cost_50-shuffled.csv
+>python all_solvers.py cost_matrix_50s.csv
 Python version: 3.14
 
 Sequential Inspection:
