@@ -639,6 +639,17 @@ Computation time and results:
 | Mixed Integer (MILP) | 1753.6 s        | 5.895 ✅         | 98.05 s         | 5.895 ✅         |
 | MILP (Rust)          | -               | -               | 2000.0 s        | 5.895 ✅         |
 
+A rare case where Python is faster than Rust, but this is not due to the language itself. Instead, we simply have different setups and default options for the MILP solver, right here:
+
+```python
+    res = milp(c=c,
+               constraints=[LinearConstraint(A_eq, b_eq, b_eq),
+                            LinearConstraint(A_ub, -np.inf, b_ub)],
+               integrality=integrality,
+               bounds=Bounds(*zip(*bounds)),
+               options={"disp": False})
+```
+
 #### Links
 
 [Leveraging transformer model and heuristic strategies for solving the Traveling Salesman Problem](https://link.springer.com/article/10.1007/s00521-026-12120-0).
