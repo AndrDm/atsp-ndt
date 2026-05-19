@@ -624,6 +624,21 @@ Time: 98.0474 seconds
 
 However, nobody was able to find a path shorter than **5.895**.
 
+Computation time and results:
+
+| Method               | Original - Time | Original - Cost | Shuffled - Time | Shuffled - Cost |
+| -------------------- | --------------- | --------------- | --------------- | --------------- |
+| Sequential           | 0.0 seconds     | 5.895 ✅         | 0.0 seconds     | 30.467          |
+| Greedy               | 0.0004 s        | 7.736           | 0.0004 s        | 6.677           |
+| Simulated Annealing  | 0.0523 s        | 5.895 ✅         | 0.0524 s        | 6.915           |
+| Ant Colony           | 1.5486 s        | 6.434           | 1.5895 s        | 6.270           |
+| Tabu Search          | 0.0536 s        | 5.895 ✅         | 0.0529 s        | 18.969          |
+| Lin-Kernighan        | 0.0185 s        | 5.895 ✅         | 0.0943 s        | 6.827           |
+| Genetic Algorithm    | 1.1799 s        | 10.008          | 1.1705 s        | 9.427           |
+| Simplex              | 0.0204 s        | 6.607           | 0.0207 s        | 15.896          |
+| Mixed Integer (MILP) | 1753.6 s        | 5.895 ✅         | 98.05 s         | 5.895 ✅         |
+| MILP (Rust)          | -               | -               | 2000.0 s        | 5.895 ✅         |
+
 #### Links
 
 [Leveraging transformer model and heuristic strategies for solving the Traveling Salesman Problem](https://link.springer.com/article/10.1007/s00521-026-12120-0).
