@@ -21,7 +21,7 @@ import itertools
 from itertools import permutations
 from scipy.optimize import LinearConstraint, Bounds, milp, linprog
 
-if minor <= 13:
+if minor <= 14:
     import gurobipy as gp
     from gurobipy import GRB
 
@@ -322,7 +322,7 @@ def genetic_algorithm(distance_matrix, population_size=100, generations=500, mut
 ## This is a Gurobi-based MILP (Mixed-Integer Linear Programming) solver 
 ## using the Miller Tucker Zemlin (MTZ) formulation to eliminate subtours.
 ##
-if minor <= 13:
+if minor <= 14:
     def solve_tsp_gurobi(matrix):
         n = len(matrix)  # Number of positions
 
@@ -687,14 +687,6 @@ print("Path:", gen_path)
 print("Cost:", round(gen_cost, 3))
 print("Time:", round(end - start, 4), "seconds")
 
-print("\nMixed-Integer Linear Programming (MILP) Algorithm:")
-start = time.time()
-milp_route, milp_cost = solve_tsp_milp(distance_matrix)
-end = time.time()
-print("Path:", milp_route)
-print("Cost:", round(milp_cost, 3))
-print("Time:", round(end - start, 4), "seconds")
-
 print("\nSimplex Method:")
 start = time.time()
 simpl_route, simpl_cost = solve_tsp_simplex(distance_matrix)
@@ -726,7 +718,7 @@ else:
     print("Held Karp Solver skipped: distance_matrix exceeds 20 elements.")
 
 
-if minor <= 13: # Python 3.13 and below only
+if minor <= 14: # Python 3.13 and below only
     if len(distance_matrix) <= 44:
         print("\nGurobi Solver:")
         start = time.time()
@@ -737,3 +729,12 @@ if minor <= 13: # Python 3.13 and below only
         print("Time:", round(end - start, 4), "seconds")
     else:
         print("\nGurobi Solver skipped: distance_matrix exceeds 44 elements.")
+
+print("\nMixed-Integer Linear Programming (MILP) Algorithm:")
+start = time.time()
+milp_route, milp_cost = solve_tsp_milp(distance_matrix)
+end = time.time()
+print("Path:", milp_route)
+print("Cost:", round(milp_cost, 3))
+print("Time:", round(end - start, 4), "seconds")
+

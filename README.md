@@ -480,4 +480,149 @@ All results in one table
 
 As you can see, MILP is one of the best approaches. By the way, the results (and routes) from Python and Rust are slightly different — Python returned 121.639 s, while Rust returned 121.644 s. This is a truly minor difference and occurs because the MILP solver uses different default configurations in each environment. These settings can be fine-tuned for consistency.
 
-Enjoy.
+### Update 19-May-2026
+
+A pretty interesting case from [LinkedIn](https://www.linkedin.com/feed/update/urn:li:activity:7462080026633498624/):
+
+![](assets/1779098515663 (1).gif)
+
+Recreated cost matrices — Sequential: cost_matrix_50.csv; Shuffled: cost_matrix_50s.csv
+
+It seems that the demonstrated path is close to optimal, with a result of 5.895.
+
+The Rust-based solution was unable to find the shortest path in `cost_matrix_50.csv` (even after running overnight), but it was able to find it in the shuffled array `cost_matrix_50s.csv` in about half an hour:
+
+```
+>milpr.exe cost_matrix_50s.csv
+Reading CSV cost_matrix_50s.csv
+CSV loaded
+Sequential movement (Home > 1 > 2 > ... > Home): 30.467 seconds
+Creating 2450 binary variables and 50 MTZ variables...
+Building objective with 2450 terms...
+Adding 100 degree constraints...
+Adding 2352 MTZ constraints...
+⠏ Solved - 00:33:20
+Optimal movement: 5.895 seconds
+Route: Home > 18 > 22 > 9 > 17 > 15 > 11 > 29 > 37 > 28 > 35 > 5 > 33 > 19 > 41 > 16 > 8 > 2 > 26 > 12 > 10 > 43 > 20 > 7 > 45 > 32 > 49 > 36 > 39 > 1 > 44 > 3 > 31 > 34 > 6 > 47 > 4 > 46 > 25 > 38 > 23 > 42 > 21 > 14 > 27 > 30 > 24 > 40 > 13 > 48 > Home
+```
+
+On the other hand, the Python-based solution was able to compute both:
+
+cost_matrix_50.csv:
+
+```
+>python all_solvers.py cost_matrix_50.csv
+Python version: 3.14
+
+Sequential Inspection:
+Path: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 0]
+Cost: 5.895
+Time: 0.0 seconds
+
+Greedy Algorithm:                                                                         Path: [0, 49, 47, 48, 3, 2, 1, 4, 5, 6, 7, 8, 9, 12, 11, 10, 24, 23, 22, 21, 20, 19, 18, 17, 16, 15, 13, 14, 44, 43, 34, 35, 36, 37, 38, 39, 40, 41, 42, 45, 46, 33, 32, 31, 30, 29, 28, 26, 25, 27, 0]
+Cost: 7.736
+Time: 0.0004 seconds
+
+Simulated Annealing:
+Path: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 0]
+Cost: 5.895
+Time: 0.0523 seconds
+
+Ant Colony Optimization:
+Path: [0, 49, 1, 3, 2, 14, 13, 15, 16, 17, 18, 19, 21, 20, 22, 23, 24, 10, 11, 12, 9, 7, 8, 6, 4, 5, 44, 43, 34, 33, 32, 31, 30, 29, 28, 27, 26, 25, 35, 36, 37, 38, 39, 40, 41, 42, 45, 46, 47, 48, 0]
+Cost: 6.434
+Time: 1.5486 seconds
+
+Tabu Search:
+Path: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 0]
+Cost: 5.895
+Time: 0.0536 seconds
+
+Lin-Kernighan (2-Opt) Heuristic:
+Path: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 0]
+Cost: 5.895
+Time: 0.0185 seconds
+
+Genetic Algorithm:
+Path: [0, 3, 49, 2, 1, 16, 17, 15, 8, 10, 24, 21, 19, 18, 20, 23, 11, 12, 45, 46, 47, 48, 5, 9, 7, 36, 35, 34, 43, 44, 42, 41, 40, 39, 38, 37, 33, 32, 31, 27, 28, 25, 26, 30, 29, 22, 13, 14, 6, 4, 0]
+Cost: 10.008
+Time: 1.1799 seconds
+
+Simplex Method:
+Path: [0, 49, 1, 3, 2, 4, 5, 6, 7, 9, 8, 10, 24, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 25, 26, 27, 28, 29, 30, 31, 32, 33, 37, 36, 34, 35, 38, 40, 39, 41, 42, 43, 44, 45, 46, 47, 48, 0]
+Cost: 6.607
+Time: 0.0204 seconds
+
+Brute Force Solver skipped: distance_matrix exceeds 12 elements.
+Held Karp Solver skipped: distance_matrix exceeds 20 elements.
+Gurobi Solver skipped: distance_matrix exceeds 44 elements.
+
+Mixed-Integer Linear Programming (MILP) Algorithm:
+Path: [0, 49, 48, 47, 46, 45, 44, 43, 42, 41, 40, 39, 38, 37, 36, 35, 34, 33, 32, 31, 30, 29, 28, 27, 26, 25, 24, 23, 22, 21, 20, 19, 18, 17, 16, 15, 14, 13, 12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1, 0]
+Cost: 5.895
+Time: 1753.6484 seconds
+```
+
+cost_matrix_50s.csv
+
+```
+>python all_solvers.py cost_50-shuffled.csv
+Python version: 3.14
+
+Sequential Inspection:
+Path: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 0]
+Cost: 30.467
+Time: 0.0 seconds
+
+Greedy Algorithm:                                                                         Path: [0, 18, 22, 9, 15, 17, 5, 33, 19, 41, 16, 8, 32, 45, 7, 20, 43, 10, 12, 26, 2, 49, 36, 39, 1, 44, 3, 34, 6, 31, 47, 4, 46, 25, 38, 23, 42, 21, 14, 27, 24, 30, 29, 11, 37, 28, 35, 40, 13, 48, 0]
+Cost: 6.677
+Time: 0.0004 seconds
+
+Simulated Annealing:
+Path: [0, 40, 13, 47, 48, 9, 18, 22, 32, 45, 7, 20, 36, 39, 1, 44, 3, 31, 34, 6, 46, 4, 25, 38, 23, 42, 21, 14, 27, 24, 30, 37, 29, 15, 17, 11, 5, 28, 35, 33, 19, 41, 16, 8, 2, 26, 12, 10, 43, 49, 0]
+Cost: 6.915
+Time: 0.0524 seconds
+
+Ant Colony Optimization:
+Path: [0, 18, 22, 9, 17, 15, 33, 5, 11, 29, 37, 28, 35, 19, 41, 16, 8, 32, 45, 7, 20, 43, 10, 12, 26, 2, 49, 36, 39, 1, 44, 3, 31, 34, 6, 47, 46, 4, 25, 38, 23, 42, 14, 21, 30, 24, 27, 40, 13, 48, 0]
+Cost: 6.27
+Time: 1.5895 seconds
+
+Tabu Search:
+Path: [0, 1, 31, 3, 4, 34, 6, 7, 8, 20, 10, 36, 12, 13, 14, 15, 16, 17, 18, 19, 9, 21, 22, 23, 24, 25, 42, 27, 28, 29, 30, 2, 32, 33, 5, 35, 11, 37, 38, 39, 40, 41, 26, 43, 44, 45, 46, 47, 48, 49, 0]
+Cost: 18.969
+Time: 0.0529 seconds
+
+Lin-Kernighan (2-Opt) Heuristic:
+Path: [0, 48, 13, 40, 24, 27, 14, 21, 42, 23, 38, 25, 46, 4, 47, 6, 34, 31, 3, 44, 1, 39, 36, 43, 10, 12, 26, 2, 8, 16, 17, 41, 19, 33, 5, 35, 28, 37, 11, 29, 30, 15, 9, 22, 18, 32, 45, 7, 20, 49, 0]
+Cost: 6.827
+Time: 0.0943 seconds
+
+Genetic Algorithm:
+Path: [0, 32, 45, 26, 12, 49, 36, 39, 1, 31, 3, 44, 43, 10, 20, 7, 2, 41, 19, 33, 35, 28, 9, 22, 24, 42, 23, 46, 38, 25, 4, 6, 34, 48, 47, 13, 40, 30, 37, 29, 11, 5, 16, 8, 15, 17, 21, 14, 27, 18, 0]
+Cost: 9.427
+Time: 1.1705 seconds
+
+Simplex Method:
+Path: [0, 22, 18, 1, 44, 2, 26, 3, 31, 4, 46, 5, 33, 6, 34, 7, 49, 20, 8, 16, 9, 17, 15, 10, 43, 12, 11, 37, 29, 13, 40, 14, 21, 27, 19, 41, 23, 42, 24, 30, 25, 38, 28, 35, 32, 45, 36, 39, 47, 48, 0]
+Cost: 15.896
+Time: 0.0207 seconds
+
+Brute Force Solver skipped: distance_matrix exceeds 12 elements.
+Held Karp Solver skipped: distance_matrix exceeds 20 elements.
+Gurobi Solver skipped: distance_matrix exceeds 44 elements.
+
+Mixed-Integer Linear Programming (MILP) Algorithm:
+Path: [0, 48, 13, 40, 24, 30, 27, 14, 21, 42, 23, 38, 25, 46, 4, 47, 6, 34, 31, 3, 44, 1, 39, 36, 49, 32, 45, 7, 20, 43, 10, 12, 26, 2, 8, 16, 41, 19, 33, 5, 35, 28, 37, 29, 11, 15, 17, 9, 22, 18, 0]
+Cost: 5.895
+Time: 98.0474 seconds
+```
+
+However, nobody was able to find a path shorter than 5.895.
+
+#### Links
+
+[Leveraging transformer model and heuristic strategies for solving the Traveling Salesman Problem](https://link.springer.com/article/10.1007/s00521-026-12120-0).
+
+
+
