@@ -492,7 +492,7 @@ Shuffled: [cost_matrix_50s.csv](https://github.com/AndrDm/atsp-ndt/blob/main/csv
 
 It seems that the demonstrated path is close to optimal, with a result of **5.895**.
 
-The Rust-based solution was unable to find the shortest path in `cost_matrix_50.csv` (even after running overnight), but it was able to find it in the shuffled array `cost_matrix_50s.csv` in about half an hour — so it makes sense to shuffle in some cases.
+The Rust-based solution was unable to find the shortest path in `cost_matrix_50.csv` (even after running overnight; I should add tolerance and stopping criteria at some point), but it was able to find it in the shuffled array `cost_matrix_50s.csv` in about half an hour—so it makes sense to shuffle in some cases.
 
 ```
 >milpr.exe cost_matrix_50s.csv
