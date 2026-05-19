@@ -484,7 +484,7 @@ As you can see, MILP is one of the best approaches. By the way, the results (and
 
 A pretty interesting case from [LinkedIn](https://www.linkedin.com/feed/update/urn:li:activity:7462080026633498624/):
 
-![](assets/1779098515663 (1).gif)
+![](assets/linkedin.gif)
 
 Recreated cost matrices from the image above:
 Sequential: [cost_matrix_50.csv](https://github.com/AndrDm/atsp-ndt/blob/main/csv/cost_matrix_50.csv); 
@@ -492,7 +492,7 @@ Shuffled: [cost_matrix_50s.csv](https://github.com/AndrDm/atsp-ndt/blob/main/csv
 
 It seems that the demonstrated path is close to optimal, with a result of **5.895**.
 
-The Rust-based solution was unable to find the shortest path in `cost_matrix_50.csv` (even after running overnight), but it was able to find it in the shuffled array `cost_matrix_50s.csv` in about half an hour:
+The Rust-based solution was unable to find the shortest path in `cost_matrix_50.csv` (even after running overnight), but it was able to find it in the shuffled array `cost_matrix_50s.csv` in about half an hour — so it makes sense to shuffle in some cases.
 
 ```
 >milpr.exe cost_matrix_50s.csv
