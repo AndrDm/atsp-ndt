@@ -486,9 +486,11 @@ A pretty interesting case from [LinkedIn](https://www.linkedin.com/feed/update/u
 
 ![](assets/1779098515663 (1).gif)
 
-Recreated cost matrices — Sequential: cost_matrix_50.csv; Shuffled: cost_matrix_50s.csv
+Recreated cost matrices from the image above:
+Sequential: [cost_matrix_50.csv](https://github.com/AndrDm/atsp-ndt/blob/main/csv/cost_matrix_50.csv); 
+Shuffled: [cost_matrix_50s.csv](https://github.com/AndrDm/atsp-ndt/blob/main/csv/cost_matrix_50s.csv);
 
-It seems that the demonstrated path is close to optimal, with a result of 5.895.
+It seems that the demonstrated path is close to optimal, with a result of **5.895**.
 
 The Rust-based solution was unable to find the shortest path in `cost_matrix_50.csv` (even after running overnight), but it was able to find it in the shuffled array `cost_matrix_50s.csv` in about half an hour:
 
@@ -508,7 +510,7 @@ Route: Home > 18 > 22 > 9 > 17 > 15 > 11 > 29 > 37 > 28 > 35 > 5 > 33 > 19 > 41 
 
 On the other hand, the Python-based solution was able to compute both:
 
-cost_matrix_50.csv:
+cost_matrix_50.csv (around half an hour for MILP):
 
 ```
 >python all_solvers.py cost_matrix_50.csv
@@ -563,7 +565,7 @@ Cost: 5.895
 Time: 1753.6484 seconds
 ```
 
-cost_matrix_50s.csv
+Shuffled cost_matrix_50s.csv (around one and half minute for MILP)
 
 ```
 >python all_solvers.py cost_50-shuffled.csv
@@ -618,7 +620,7 @@ Cost: 5.895
 Time: 98.0474 seconds
 ```
 
-However, nobody was able to find a path shorter than 5.895.
+However, nobody was able to find a path shorter than **5.895**.
 
 #### Links
 
