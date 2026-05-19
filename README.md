@@ -654,5 +654,4 @@ A rare case where Python is faster than Rust, but this is not due to the languag
 
 [Leveraging transformer model and heuristic strategies for solving the Traveling Salesman Problem](https://link.springer.com/article/10.1007/s00521-026-12120-0).
 
-
-
+[Traveling Salesman Problem](https://www.math.uwaterloo.ca/tsp/index.html).
